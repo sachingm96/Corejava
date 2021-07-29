@@ -47,7 +47,9 @@ public class FestivalTester {
 			if(element.getType().equals(ReligionType.HINDUS))
 			{
 				System.out.println(element);
+				
 			}
+		
 		});
 	}
 
