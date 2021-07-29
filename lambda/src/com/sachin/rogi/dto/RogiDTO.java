@@ -2,7 +2,7 @@ package com.sachin.rogi.dto;
 
 import java.io.Serializable;
 
-public class RogiDTO implements Serializable {
+public class RogiDTO implements Serializable,Comparable<RogiDTO> {
 
 	private int id;
 	private String name;
@@ -27,6 +27,19 @@ public class RogiDTO implements Serializable {
 	public String toString() {
 		return "RogiDTO [id=" + id + ", name=" + name + ", age=" + age + ", kayile=" + kayile + ", badukuGurantee="
 				+ badukuGurantee + "]";
+	}
+	
+	@Override
+	public int compareTo(RogiDTO o) {
+		Integer temp = o.getAge();
+		if (this.age == 0)
+			return 0;
+		if (this.age> 0)
+			return 1;
+		if (this.age< 0)
+			return -1;
+		return 0;
+
 	}
 
 	@Override

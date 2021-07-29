@@ -49,10 +49,28 @@ public class RogiTester {
 		Collection<RogiDTO> collection1 = dao.findAll((b) -> b.getName().equals("venesh"));
 		for (RogiDTO rogi : collection1) {
 			System.out.println(rogi);
-
-			System.out.println("------------------------------");
-
 		}
+			System.out.println("------------------------------");
+			
+			Collection<RogiDTO> all = dao.findAll();
+			for (RogiDTO rogiDTO : all) {
+				System.out.println("find all:"+rogiDTO);
+			}
+	
+			System.out.println("------------------------------");
+			
+			Optional<RogiDTO> age = dao.findByMaxAge();
+			if (age.isPresent()) {
+				RogiDTO ag = age.get();
+				System.out.println("max age:" + ag);
+			}
+			
+			System.out.println("------------------------------");
+			Optional<RogiDTO> min = dao.findByMinAge();
+			if (min.isPresent()) {
+				RogiDTO value = min.get();
+				System.out.println("min age:" + value);
+			}
 	}
 
 }

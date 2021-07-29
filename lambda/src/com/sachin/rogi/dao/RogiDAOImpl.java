@@ -2,6 +2,7 @@ package com.sachin.rogi.dao;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -20,15 +21,15 @@ public class RogiDAOImpl implements RogiDAO {
 
 	@Override
 	public Optional<RogiDTO> findOne(RogiSearch search) {
-		List<RogiDTO> list1 = new ArrayList<RogiDTO>();
-
-		Iterator<RogiDTO> itr = list1.iterator();
-		Optional<RogiDTO> optional = Optional.empty();
-		while (itr.hasNext()) {
-			RogiDTO rogiDTO = itr.next();
-			if (search.find(rogiDTO)) {
-				optional = Optional.of(rogiDTO);
+		Iterator<RogiDTO> iterator=this.list.iterator();
+		Optional<RogiDTO> optional=Optional.empty();
+		while (iterator.hasNext()) {
+			RogiDTO rogiDTO =  iterator.next();
+			if(search.find(rogiDTO))
+			{
+				optional=Optional.of(rogiDTO);
 			}
+			
 		}
 		return optional;
 	}
@@ -41,13 +42,16 @@ public class RogiDAOImpl implements RogiDAO {
 
 	@Override
 	public Optional<RogiDTO> findByMaxAge() {
-
-		return null;
+		Optional<RogiDTO> opt=Optional.empty();
+		opt=Optional.of(Collections.max(list));
+		return opt;
 	}
 
 	@Override
 	public Optional<RogiDTO> findByMinAge() {
-		return null;
+		Optional<RogiDTO> opt=Optional.empty();
+		opt=Optional.of(Collections.min(list));
+		return opt;
 	}
 
 	@Override
